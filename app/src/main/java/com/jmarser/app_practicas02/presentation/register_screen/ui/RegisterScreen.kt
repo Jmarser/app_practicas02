@@ -23,7 +23,12 @@ import androidx.compose.ui.unit.sp
  */
 
 @Composable
-fun RegisterScreen() {
+fun RegisterScreen(
+    goToLogin: () -> Unit,
+    goToMain: () -> Unit,
+    goToForgot: () -> Unit,
+    goToBack: () -> Unit
+) {
     Column (
         modifier = Modifier
             .fillMaxSize(),
@@ -37,21 +42,27 @@ fun RegisterScreen() {
         )
         Spacer(modifier = Modifier.height(20.dp))
         Button(
-            onClick = { /*TODO*/ }
+            onClick = { goToLogin() }
         ) {
             Text(text = "Go To Login")
         }
         Spacer(modifier = Modifier.height(20.dp))
         Button(
-            onClick = { /*TODO*/ }
+            onClick = { goToMain() }
         ) {
             Text(text = "Go To Main")
         }
         Spacer(modifier = Modifier.height(20.dp))
         Button(
-            onClick = { /*TODO*/ }
+            onClick = { goToForgot() }
         ) {
             Text(text = "Go To Forgot")
+        }
+        Spacer(modifier = Modifier.height(20.dp))
+        Button(
+            onClick = { goToBack() }
+        ) {
+            Text(text = "Go To Back")
         }
     }
 }
@@ -60,5 +71,5 @@ fun RegisterScreen() {
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewRegisterScreen() {
-    RegisterScreen()
+    RegisterScreen({}, {}, {}, {})
 }

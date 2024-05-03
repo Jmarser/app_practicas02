@@ -24,7 +24,10 @@ import androidx.compose.ui.unit.sp
  */
 
 @Composable
-fun SplashScreen() {
+fun SplashScreen(
+    goToLogin: () -> Unit,
+    goToMain: () -> Unit,
+) {
     Column (
         modifier = Modifier
             .fillMaxSize(),
@@ -38,13 +41,13 @@ fun SplashScreen() {
         )
         Spacer(modifier = Modifier.height(20.dp))
         Button(
-            onClick = { /*TODO*/ }
+            onClick = { goToLogin() }
         ) {
           Text(text = "Go To Login")
         }
         Spacer(modifier = Modifier.height(20.dp))
         Button(
-            onClick = { /*TODO*/ }
+            onClick = { goToMain() }
         ) {
             Text(text = "Go To Main")
         }
@@ -55,5 +58,5 @@ fun SplashScreen() {
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewSplashScreen() {
-    SplashScreen()
+    SplashScreen({}, {})
 }

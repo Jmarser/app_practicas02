@@ -23,7 +23,11 @@ import androidx.compose.ui.unit.sp
  */
 
 @Composable
-fun ForgotScreen() {
+fun ForgotScreen(
+    goToLogin: () -> Unit,
+    goToRegister: () -> Unit,
+    goToBack: () -> Unit
+) {
     Column (
         modifier = Modifier
             .fillMaxSize(),
@@ -37,17 +41,22 @@ fun ForgotScreen() {
         )
         Spacer(modifier = Modifier.height(20.dp))
         Button(
-            onClick = { /*TODO*/ }
+            onClick = { goToLogin() }
         ) {
             Text(text = "Go To Login")
         }
         Spacer(modifier = Modifier.height(20.dp))
         Button(
-            onClick = { /*TODO*/ }
+            onClick = { goToRegister() }
         ) {
             Text(text = "Go To Register")
         }
-
+        Spacer(modifier = Modifier.height(20.dp))
+        Button(
+            onClick = { goToBack() }
+        ) {
+            Text(text = "Go To Back")
+        }
     }
 }
 
@@ -55,5 +64,5 @@ fun ForgotScreen() {
 @Preview(showSystemUi = true)
 @Composable
 fun PreviewForgotScreen() {
-    ForgotScreen()
+    ForgotScreen({}, {}, {})
 }
