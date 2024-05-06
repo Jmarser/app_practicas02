@@ -1,6 +1,5 @@
 package com.jmarser.app_practicas02.presentation.splash_screen.ui
 
-import android.window.SplashScreen
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Column
 import androidx.compose.foundation.layout.Spacer
@@ -28,6 +27,7 @@ fun SplashScreen(
     goToLogin: () -> Unit,
     goToMain: () -> Unit,
 ) {
+
     Column (
         modifier = Modifier
             .fillMaxSize(),

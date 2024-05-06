@@ -53,7 +53,7 @@ android {
 
 dependencies {
 
-    implementation("androidx.core:core-ktx:1.13.0")
+    implementation("androidx.core:core-ktx:1.13.1")
     implementation("androidx.lifecycle:lifecycle-runtime-ktx:2.7.0")
     implementation("androidx.activity:activity-compose:1.9.0")
     implementation(platform("androidx.compose:compose-bom:2023.03.00"))
@@ -61,9 +61,9 @@ dependencies {
     implementation("androidx.compose.ui:ui-graphics")
     implementation("androidx.compose.ui:ui-tooling-preview")
     implementation("androidx.compose.material3:material3:1.2.1")
-    implementation("androidx.compose.material:material-icons-extended:1.6.6")
+    implementation("androidx.compose.material:material-icons-extended:1.6.7")
     implementation("com.android.volley:volley:1.2.1")
-    implementation("com.google.android.engage:engage-core:1.4.0")
+    implementation("com.google.android.engage:engage-core:1.5.0")
     testImplementation("junit:junit:4.13.2")
     androidTestImplementation("androidx.test.ext:junit:1.1.5")
     androidTestImplementation("androidx.test.espresso:espresso-core:3.5.1")
@@ -77,9 +77,9 @@ dependencies {
     implementation("org.jetbrains.kotlinx:kotlinx-coroutines-core:1.7.3")
 
     // ViewModel
-    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0-beta01")
+    implementation("androidx.lifecycle:lifecycle-viewmodel-ktx:2.8.0-rc01")
     // LiveData
-    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0-beta01")
+    implementation("androidx.lifecycle:lifecycle-livedata-ktx:2.8.0-rc01")
 
     implementation("com.squareup.retrofit2:retrofit:2.9.0")
     implementation("com.squareup.retrofit2:converter-gson:2.9.0")

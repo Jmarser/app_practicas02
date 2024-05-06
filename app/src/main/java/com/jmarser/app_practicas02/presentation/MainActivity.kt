@@ -1,4 +1,4 @@
-package com.jmarser.app_practicas02
+package com.jmarser.app_practicas02.presentation
 
 import android.os.Bundle
 import androidx.activity.ComponentActivity
@@ -12,7 +12,9 @@ import androidx.compose.ui.Modifier
 import androidx.compose.ui.tooling.preview.Preview
 import com.jmarser.app_practicas02.navigation.RootNavGraph
 import com.jmarser.app_practicas02.ui.theme.App_Practicas02Theme
+import dagger.hilt.android.AndroidEntryPoint
 
+@AndroidEntryPoint
 class MainActivity : ComponentActivity() {
     override fun onCreate(savedInstanceState: Bundle?) {
         super.onCreate(savedInstanceState)
