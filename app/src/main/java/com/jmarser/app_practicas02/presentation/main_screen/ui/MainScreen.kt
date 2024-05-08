@@ -25,7 +25,9 @@ fun MainScreen(
         topBar = {},
         bottomBar = { CustomBottomNavBar(navController = navController)}
     ) {
-        var modifier = Modifier.padding(it)
-        MainNavBarGraph(navController = navController)
+        MainNavBarGraph(
+            navController = navController,
+            paddingValues = it
+        )
     }
 }

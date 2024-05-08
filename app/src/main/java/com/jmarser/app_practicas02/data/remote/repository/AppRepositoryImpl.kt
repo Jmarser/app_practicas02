@@ -1,6 +1,5 @@
 package com.jmarser.app_practicas02.data.remote.repository
 
-import com.jmarser.app_practicas02.data.remote.modelsDTO.UsersResponseDto
 import com.jmarser.app_practicas02.data.remote.network.ApiService
 import com.jmarser.app_practicas02.data.remote.network.SafeApiCall
 import com.jmarser.app_practicas02.domain.repository.AppRepository

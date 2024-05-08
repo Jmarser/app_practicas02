@@ -5,8 +5,6 @@ data class UserDm(
     val firstname: String?,
     val lastname: String?,
     val email: String?,
-    val birthDate: String?,
-    val login: LoginDm?,
     val address: AddressDm?,
     val phone: String?,
     val website: String?,

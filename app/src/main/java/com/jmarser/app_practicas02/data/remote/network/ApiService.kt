@@ -1,6 +1,6 @@
 package com.jmarser.app_practicas02.data.remote.network
 
-import com.jmarser.app_practicas02.data.remote.modelsDTO.UsersResponseDto
+import com.jmarser.app_practicas02.data.remote.modelsDTO.UserDto
 import retrofit2.Response
 import retrofit2.http.GET
 
@@ -39,5 +39,5 @@ import retrofit2.http.GET
 interface ApiService {
 
     @GET(ConstNetwork.GET_USERS)
-    suspend fun getAllUsers(): Response<UsersResponseDto>
+    suspend fun getAllUsers(): Response<List<UserDto>>
 }

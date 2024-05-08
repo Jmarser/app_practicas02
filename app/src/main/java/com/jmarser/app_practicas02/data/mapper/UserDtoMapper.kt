@@ -10,16 +10,22 @@ import com.jmarser.app_practicas02.domain.modelsDM.UserDm
  * Created: 05/05/2024
  */
 
+
+fun List<UserDto>.tansformToListOfUserDm(): List<UserDm>{
+    return this.map {
+        it.transformToUserDm()
+    }
+}
+
 fun UserDto.transformToUserDm() =
     UserDm(
         id = this.id ?: 0,
         firstname = this.firstname ?: "",
         lastname = this.lastname ?: "",
         email = this.email ?: "",
-        birthDate = this.birthDate ?: "",
-        login = this.login?.transformToLoginDm(),
         address = this.address?.transformToAddressDm(),
         phone = this.phone ?: "",
         website = this.website ?: "",
         company = this.company?.transformToCompanyDm(),
     )
+

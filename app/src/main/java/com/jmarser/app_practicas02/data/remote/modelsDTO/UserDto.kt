@@ -6,16 +6,12 @@ import com.google.gson.annotations.SerializedName
 data class UserDto(
     @SerializedName("id")
     val id: Int?,
-    @SerializedName("firstname")
+    @SerializedName("name")
     val firstname: String?,
-    @SerializedName("lastname")
+    @SerializedName("username")
     val lastname: String?,
     @SerializedName("email")
     val email: String?,
-    @SerializedName("birthDate")
-    val birthDate: String?,
-    @SerializedName("login")
-    val login: LoginDto?,
     @SerializedName("address")
     val address: AddressDto?,
     @SerializedName("phone")

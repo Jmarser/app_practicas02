@@ -1,5 +1,6 @@
 package com.jmarser.app_practicas02.navigation
 
+import androidx.compose.foundation.layout.PaddingValues
 import androidx.compose.runtime.Composable
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.NavHost
@@ -17,7 +18,8 @@ import com.jmarser.app_practicas02.presentation.user_screen.ui.UserScreen
 
 @Composable
 fun MainNavBarGraph(
-    navController: NavHostController
+    navController: NavHostController,
+    paddingValues: PaddingValues
 ) {
     NavHost(
         navController = navController,
@@ -27,7 +29,7 @@ fun MainNavBarGraph(
         composable(
             route = RoutesBottomNavBar.userScreen.route
         ){
-            UserScreen()
+            UserScreen(paddingValues = paddingValues)
         }
         composable(
             route = RoutesBottomNavBar.albunsScreen.route

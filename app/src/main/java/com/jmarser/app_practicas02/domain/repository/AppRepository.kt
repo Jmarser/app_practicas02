@@ -1,6 +1,6 @@
 package com.jmarser.app_practicas02.domain.repository
 
-import com.jmarser.app_practicas02.data.remote.modelsDTO.UsersResponseDto
+import com.jmarser.app_practicas02.data.remote.modelsDTO.UserDto
 import com.jmarser.app_practicas02.data.remote.repository.Resource
 
 /**
@@ -12,5 +12,5 @@ import com.jmarser.app_practicas02.data.remote.repository.Resource
 
 interface AppRepository {
 
-    suspend fun getAllUsers(): Resource<UsersResponseDto>
+    suspend fun getAllUsers(): Resource<List<UserDto>>
 }
