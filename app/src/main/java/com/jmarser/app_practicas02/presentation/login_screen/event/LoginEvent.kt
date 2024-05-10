@@ -6,5 +6,4 @@ sealed class LoginEvent{
     data class EmailFocusChanged(val hasFocus: Boolean): LoginEvent()
     data class passwordFocusChanged(val hasFocus: Boolean): LoginEvent()
     data class LoginButtonPressed(val email: String, val password: String): LoginEvent()
-    data class CheckButton(val push: Boolean): LoginEvent()
 }

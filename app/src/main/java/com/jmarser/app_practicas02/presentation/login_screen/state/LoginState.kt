@@ -16,7 +16,6 @@ sealed class LoginState{
         val isPasswordValid: Boolean? = null,
         val emailErrorMessage: String? = null,
         val passwordErrorMessage: String? = null,
-        val isSubmitButtonEnabled: Boolean = false,
-        val isCheckButton: Boolean = false
+        val isSubmitButtonEnabled: Boolean = false
     ): LoginState()
 }

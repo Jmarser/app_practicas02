@@ -1,5 +1,6 @@
 package com.jmarser.app_practicas02.presentation.register_screen.ui
 
+import android.widget.Toast
 import androidx.compose.foundation.background
 import androidx.compose.foundation.layout.Arrangement
 import androidx.compose.foundation.layout.Box
@@ -14,26 +15,35 @@ import androidx.compose.foundation.rememberScrollState
 import androidx.compose.foundation.shape.RoundedCornerShape
 import androidx.compose.foundation.verticalScroll
 import androidx.compose.material3.Button
+import androidx.compose.material3.LocalAbsoluteTonalElevation
 import androidx.compose.material3.MaterialTheme
 import androidx.compose.material3.Surface
 import androidx.compose.material3.Text
 import androidx.compose.material3.TextButton
 import androidx.compose.runtime.Composable
+import androidx.compose.runtime.collectAsState
+import androidx.compose.runtime.getValue
 import androidx.compose.ui.Alignment
 import androidx.compose.ui.Modifier
+import androidx.compose.ui.focus.onFocusChanged
 import androidx.compose.ui.graphics.Color
+import androidx.compose.ui.platform.LocalContext
 import androidx.compose.ui.text.font.FontWeight
 import androidx.compose.ui.text.input.ImeAction
 import androidx.compose.ui.text.input.KeyboardType
 import androidx.compose.ui.tooling.preview.Preview
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.sp
+import androidx.hilt.navigation.compose.hiltViewModel
 import com.jmarser.app_practicas02.R
 import com.jmarser.app_practicas02.presentation.components.HeaderAuth
 import com.jmarser.app_practicas02.presentation.components.PasswordInputField
 import com.jmarser.app_practicas02.presentation.components.RoundedButtonWithPB
 import com.jmarser.app_practicas02.presentation.components.RowArrowGoBack
 import com.jmarser.app_practicas02.presentation.components.TextInputField
+import com.jmarser.app_practicas02.presentation.register_screen.event.RegisterEvent
+import com.jmarser.app_practicas02.presentation.register_screen.state.RegisterState
+import com.jmarser.app_practicas02.presentation.register_screen.viewModel.RegisterViewModel
 
 /**
  * Project: App_Practicas02
@@ -47,8 +57,13 @@ fun RegisterScreen(
     goToLogin: () -> Unit,
     goToMain: () -> Unit,
     goToForgot: () -> Unit,
-    goToBack: () -> Unit
+    goToBack: () -> Unit,
+    viewModel: RegisterViewModel = hiltViewModel()
 ) {
+
+    val context = LocalContext.current
+    val registerState by viewModel.registerState.collectAsState()
+    val registerDataState = registerState as? RegisterState.RegisterDataState
 
     Surface (
         modifier = Modifier
@@ -94,61 +109,97 @@ fun RegisterScreen(
                     )
                 ){
                     TextInputField(
-                        value = "",
+                        modifier = Modifier
+                            .onFocusChanged {focusState ->
+                                if(!focusState.isFocused){
+                                    viewModel.onEvent(RegisterEvent.nameFocusChanged(hasFocus = false))
+                                }
+                            },
+                        value = registerDataState?.name ?: "",
                         textLabel = "Nombre",
                         keyboardType = KeyboardType.Text,
                         imeAction = ImeAction.Next,
-                        onValueChange = {},
-                        errorMessage = ""
+                        onValueChange = { viewModel.onEvent(RegisterEvent.nameChanged(it)) },
+                        errorMessage = registerDataState?.nameErrorMessage
                     )
 
                     TextInputField(
-                        value = "",
+                        modifier = Modifier
+                            .onFocusChanged { focusState ->
+                                if(!focusState.isFocused){
+                                    viewModel.onEvent(RegisterEvent.apellidosFocusChanged(hasFocus = false))
+                                }
+                            },
+                        value = registerDataState?.apellidos ?: "",
                         textLabel = "Apellidos",
                         keyboardType = KeyboardType.Text,
                         imeAction = ImeAction.Next,
-                        onValueChange = {},
-                        errorMessage = ""
+                        onValueChange = { viewModel.onEvent(RegisterEvent.apellidosChanged(it))},
+                        errorMessage = registerDataState?.apellidosErrorMessage
                     )
 
                     TextInputField(
-                        value = "",
+                        modifier = Modifier
+                            .onFocusChanged { focusState ->
+                                if(!focusState.isFocused){
+                                    viewModel.onEvent(RegisterEvent.phoneFocusChanged(hasFocus = false))
+                                }
+                            },
+                        value = registerDataState?.phone ?: "",
                         textLabel = "Teléfono",
                         keyboardType = KeyboardType.Text,
                         imeAction = ImeAction.Next,
-                        onValueChange = {},
-                        errorMessage = ""
+                        onValueChange = {viewModel.onEvent(RegisterEvent.phoneChanged(it))},
+                        errorMessage = registerDataState?.phoneErrorMessage
                     )
 
                     TextInputField(
-                        value = "",
+                        modifier = Modifier
+                            .onFocusChanged { focusState ->
+                                if(!focusState.isFocused){
+                                    viewModel.onEvent(RegisterEvent.emailFocusChanged(hasFocus = false))
+                                }
+                            },
+                        value = registerDataState?.email ?: "",
                         textLabel = "Email",
                         keyboardType = KeyboardType.Text,
                         imeAction = ImeAction.Next,
-                        onValueChange = {},
-                        errorMessage = ""
+                        onValueChange = {viewModel.onEvent(RegisterEvent.emailChanged(it))},
+                        errorMessage = registerDataState?.emailErrorMessage
                     )
 
                     PasswordInputField(
-                        value = "",
+                        modifier = Modifier
+                            .onFocusChanged { focusState ->
+                                if(!focusState.isFocused){
+                                    viewModel.onEvent(RegisterEvent.passwordFocusChanged(hasFocus = false))
+                                }
+                            },
+                        value = registerDataState?.password ?: "",
                         textLabel = "Password",
                         keyboardType = KeyboardType.Password,
                         imeAction = ImeAction.Next,
-                        onValueChange = {},
+                        onValueChange = {viewModel.onEvent(RegisterEvent.passwordChanged(it))},
                         iconShow = R.drawable.ic_icon_show,
                         iconHide = R.drawable.ic_icon_hide,
-                        errorMessage = ""
+                        errorMessage = registerDataState?.passwordErrorMessage
                     )
 
                     PasswordInputField(
-                        value = "",
+                        modifier = Modifier
+                            .onFocusChanged { focusState ->
+                                if(!focusState.isFocused){
+                                    viewModel.onEvent(RegisterEvent.repeatPasswordFocusChanged(hasFocus = false))
+                                }
+                            },
+                        value = registerDataState?.repeatPassword ?: "",
                         textLabel = "Repeat Password",
                         keyboardType = KeyboardType.Password,
                         imeAction = ImeAction.Next,
-                        onValueChange = {},
+                        onValueChange = {viewModel.onEvent(RegisterEvent.repeatPasswordChanged(it))},
                         iconShow = R.drawable.ic_icon_show,
                         iconHide = R.drawable.ic_icon_hide,
-                        errorMessage = ""
+                        errorMessage = registerDataState?.repeatPasswordErrorMessage
                     )
 
                     Spacer(modifier = Modifier.height(16.dp))
@@ -156,9 +207,13 @@ fun RegisterScreen(
                     RoundedButtonWithPB(
                         text = "Registrarse",
                         onClick = {
+                            if (registerDataState?.isSubmitButtonEnabled == true){
 
+                            }else{
+                                Toast.makeText(context, "Debe rellenar todos los campos del registro.", Toast.LENGTH_LONG).show()
+                            }
                         },
-                        isEnabled = true,
+                        isEnabled = registerDataState?.isSubmitButtonEnabled ?: false,
                         displayProgressBar = false
                     )
 

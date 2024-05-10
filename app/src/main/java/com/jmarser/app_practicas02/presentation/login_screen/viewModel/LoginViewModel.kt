@@ -41,7 +41,6 @@ class LoginViewModel @Inject constructor(
                 }
             }
             is LoginEvent.LoginButtonPressed -> tryToLogin(event.email, event.password)
-            is LoginEvent.CheckButton -> TODO()
         }
     }
 
